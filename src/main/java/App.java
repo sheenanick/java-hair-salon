@@ -65,6 +65,32 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    
+    get("/stylists/:id/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params(":id"));
+      model.put("stylist", Stylist.find(id));
+      model.put("template", "templates/stylist-edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/stylists/:id/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String firstname = request.queryParams("firstname");
+      String lastname = request.queryParams("lastname");
+      String description = request.queryParams("description");
+      int stylistid = Integer.parseInt(request.params(":id"));
+      Stylist.update(stylistid, firstname, lastname, description);
+      response.redirect("/stylists/" + stylistid);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/stylists/:id/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params(":id"));
+      Stylist.delete(id);
+      response.redirect("/");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }

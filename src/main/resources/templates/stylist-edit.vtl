@@ -1,0 +1,11 @@
+<h1>Edit Stylist: $stylist.getFirstName() $stylist.getLastName()</h1>
+<form action="/stylists/$stylist.getId()/edit" method="post">
+  <label for="firstname">First Name</label>
+  <input type="text" name="firstname" value="$stylist.getFirstName()">
+  <label for="lastname">Last Name</label>
+  <input type="text" name="lastname" value="$stylist.getLastName()">
+  <label for="description">Description</label>
+  <input type="text" name="description" value="$stylist.getDescription()">
+  <button class="btn btn-primary" type="submit" name="update">Update</button>
+</form>
+  <a href="/stylists/$stylist.getId()/delete"><button class="btn btn-danger" type="button" name="delete">Delete</button></a>
