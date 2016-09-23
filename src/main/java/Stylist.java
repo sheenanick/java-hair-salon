@@ -22,6 +22,20 @@ public class Stylist {
     }
   }
 
+  public int getId() {
+    return id;
+  }
 
+  public String getFirstName() {
+    return firstname;
+  }
+
+  public String getLastName() {
+    return lastname;
+  }
+
+  public String getDescription() {
+    return description;
+  }
 
 }

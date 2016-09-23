@@ -25,6 +25,24 @@ public class Client {
     }
   }
 
+  public int getId() {
+    return id;
+  }
 
+  public String getFirstName() {
+    return firstname;
+  }
+
+  public String getLastName() {
+    return lastname;
+  }
+
+  public String getNotes() {
+    return notes;
+  }
+
+  public int getStylistId() {
+    return stylistid;
+  }
 
 }

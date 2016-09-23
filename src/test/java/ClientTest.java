@@ -18,6 +18,31 @@ public class ClientTest {
     assertTrue(client instanceof Client);
   }
 
+  @Test
+  public void Client_getId_true() {
+    assertTrue(client.getId() > 0);
+  }
+
+  @Test
+  public void Client_getFirstName_string() {
+    assertEquals("Jane", client.getFirstName());
+  }
+
+  @Test
+  public void Client_getLastName_string() {
+    assertEquals("Smith", client.getLastName());
+  }
+
+  @Test
+  public void Client_getNotes_string() {
+    assertEquals("Has visited two times. Used color Como Light Brown 7NGM.", client.getNotes());
+  }
+
+  @Test
+  public void Client_getFirstName_int() {
+    assertEquals(1, client.getStylistId());
+  }
+
   @After
   public void tearDown() {
     try(Connection con = DB.sql2o.open()) {
