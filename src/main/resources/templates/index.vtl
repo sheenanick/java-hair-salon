@@ -1,0 +1,8 @@
+<h1>Stylists</h1>
+
+#foreach ($stylist in $stylists)
+  <a href="/stylists/$stylist.getId()"><h3>$stylist.getFirstName() $stylist.getLastName()</h3></a>
+  <em><p>$stylist.getDescription()</p></em>
+#end
+
+<a href="/stylists/new">Add a new stylist</a>
