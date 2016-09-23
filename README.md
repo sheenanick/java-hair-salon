@@ -10,7 +10,7 @@ This is an application for a hair salon where the user can add a list of stylist
 
 ## Database Schema
 
-![database diagram][database.png]
+![database diagram](database.png)
 
 ## Technical Specifications
 
@@ -33,9 +33,16 @@ This is an application for a hair salon where the user can add a list of stylist
 
 ## Setup/Installation Requirements
 
-* Clone this repository.
-* Run the main method by entering 'gradle run' in your terminal.
-* View http://localhost:4567 in a web browser of your choice.
+In PSQL:
+* CREATE DATABASE hair_salon;
+* CREATE TABLE stylists (id serial PRIMARY KEY, firstname varchar, lastname varchar, description varchar);
+* CREATE TABLE clients (id serial PRIMARY KEY, firstname varchar, lastname varchar, notes varchar);
+
+In your terminal:
+* Clone this repository from [github](https://github.com/sheenanick/java-hair-salon).
+* Run the main method by typing 'gradle run'.
+
+View http://localhost:4567 in a web browser of your choice.
 
 ## Support and contact details
 
