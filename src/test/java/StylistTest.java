@@ -36,6 +36,11 @@ public class StylistTest {
     assertEquals("John specializes in hair color and balayage highlights", stylist.getDescription());
   }
 
+  @Test
+  public void Stylist_all_ArrayList() {
+    assertTrue(stylist.all().size() > 0);
+  }
+
   @After
   public void tearDown() {
     try(Connection con = DB.sql2o.open()) {

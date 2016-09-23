@@ -1,4 +1,5 @@
 import org.sql2o.*;
+import java.util.List;
 
 public class Client {
   private int id;
@@ -43,6 +44,23 @@ public class Client {
 
   public int getStylistId() {
     return stylistid;
+  }
+
+  public static List<Client> all() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients";
+      return con.createQuery(sql)
+        .executeAndFetch(Client.class);
+    }
+  }
+
+  public static List<Client> allByStylist(int stylistid) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients WHERE stylistid = :id";
+      return con.createQuery(sql)
+        .addParameter("id", stylistid)
+        .executeAndFetch(Client.class);
+    }
   }
 
 }
