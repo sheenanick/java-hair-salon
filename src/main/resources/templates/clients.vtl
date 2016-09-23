@@ -1,0 +1,17 @@
+<h1>All Clients:</h1>
+
+#foreach ($client in $clients)
+  <h4>$client.getFirstName() $client.getLastName() <a href="/stylists/$stylist.getId()/clients/$client.getId()/edit">edit</a></h4>
+  <ul>
+    <li>Stylist:
+      #foreach($stylist in $stylists)
+        #if($stylist.getId() == $client.getStylistId())
+          $stylist.getFirstName() $stylist.getLastName()
+        #end
+      #end
+    </li>
+    <li>Notes: $client.getNotes()</li>
+  </ul>
+#end
+
+<a href="/$stylist.getId()/clients/new">Add new client</a>
