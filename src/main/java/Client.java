@@ -46,14 +46,6 @@ public class Client {
     return stylistid;
   }
 
-  public static List<Client> all() {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM clients";
-      return con.createQuery(sql)
-        .executeAndFetch(Client.class);
-    }
-  }
-
   public static Client find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients WHERE id = :id";
@@ -63,9 +55,17 @@ public class Client {
     }
   }
 
+  public static List<Client> all() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients ORDER by lastname";
+      return con.createQuery(sql)
+        .executeAndFetch(Client.class);
+    }
+  }
+
   public static List<Client> allByStylist(int stylistid) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM clients WHERE stylistid = :id";
+      String sql = "SELECT * FROM clients WHERE stylistid = :id ORDER by lastname";
       return con.createQuery(sql)
         .addParameter("id", stylistid)
         .executeAndFetch(Client.class);

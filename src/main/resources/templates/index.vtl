@@ -1,8 +1,11 @@
+<img class="main-image jumbotron" src="/images/salon.jpg" alt="image of salon">
 <h1>Stylists</h1>
 
+<div class="row">
 #foreach ($stylist in $stylists)
-  <a href="/stylists/$stylist.getId()"><h3>$stylist.getFirstName() $stylist.getLastName()</h3></a>
-  <em><p>$stylist.getDescription()</p></em>
+  <div class="col-sm-4">
+    <h3><a href="/stylists/$stylist.getId()">$stylist.getFirstName() $stylist.getLastName()</a></h3>
+    <p><em>$stylist.getDescription()</em></p>
+  </div>
 #end
-
-<a href="/stylists/new">Add a new stylist</a>
+</div>

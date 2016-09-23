@@ -46,7 +46,25 @@ public class App {
       String lastname = request.queryParams("lastname");
       String description = request.queryParams("description");
       Stylist stylist = new Stylist(firstname, lastname, description);
-      response.redirect("/");
+      response.redirect("/stylists");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/clients/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("stylists", Stylist.all());
+      model.put("template", "templates/new-client.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/clients/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String firstname = request.queryParams("firstname");
+      String lastname = request.queryParams("lastname");
+      String notes = request.queryParams("notes");
+      int stylistid = Integer.parseInt(request.queryParams("stylistid"));
+      Client client = new Client(firstname, lastname, notes, stylistid);
+      response.redirect("/clients");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -59,7 +77,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    //get("stylists/:id/clients/new"
+    //get("stylists/:stylistid/clients/new"
     get("/:stylistid/clients/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       int id = Integer.parseInt(request.params(":stylistid"));
@@ -68,7 +86,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    //post("/stylists/:id/clients/new"
+    //post("/stylists/:stylistid/clients/new"
     post("/:stylistid/clients/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String firstname = request.queryParams("firstname");
@@ -103,7 +121,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       int id = Integer.parseInt(request.params(":id"));
       Stylist.delete(id);
-      response.redirect("/");
+      response.redirect("/stylists");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

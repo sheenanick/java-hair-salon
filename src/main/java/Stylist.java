@@ -41,7 +41,7 @@ public class Stylist {
 
   public static List<Stylist> all() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM stylists";
+      String sql = "SELECT * FROM stylists ORDER by lastname";
       return con.createQuery(sql)
       .executeAndFetch(Stylist.class);
     }
