@@ -36,7 +36,7 @@ This is an application for a hair salon where the user can add a list of stylist
 In PSQL:
 * CREATE DATABASE hair_salon;
 * CREATE TABLE stylists (id serial PRIMARY KEY, firstname varchar, lastname varchar, description varchar);
-* CREATE TABLE clients (id serial PRIMARY KEY, firstname varchar, lastname varchar, notes varchar);
+* CREATE TABLE clients (id serial PRIMARY KEY, firstname varchar, lastname varchar, notes varchar, stylistid integer);
 
 In your terminal:
 * Clone this repository from [github](https://github.com/sheenanick/java-hair-salon).
