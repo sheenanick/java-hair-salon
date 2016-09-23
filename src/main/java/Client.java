@@ -63,4 +63,26 @@ public class Client {
     }
   }
 
+  public static void update(int id, String firstname, String lastname, String notes, int stylistid) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET firstname = :firstname, lastname = :lastname, notes = :notes, stylistid = :stylistid WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .addParameter("firstname", firstname)
+        .addParameter("lastname", lastname)
+        .addParameter("notes", notes)
+        .addParameter("stylistid", stylistid)
+        .executeUpdate();
+    }
+  }
+
+  public static void delete(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM clients WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+
 }

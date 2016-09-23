@@ -47,4 +47,25 @@ public class Stylist {
     }
   }
 
+  public static void update(int id, String firstname, String lastname, String description) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE stylists SET firstname = :firstname, lastname = :lastname, description = :description WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .addParameter("firstname", firstname)
+        .addParameter("lastname", lastname)
+        .addParameter("description", description)
+        .executeUpdate();
+    }
+  }
+
+  public static void delete(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM stylists WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+
 }
