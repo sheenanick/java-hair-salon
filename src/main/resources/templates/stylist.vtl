@@ -2,7 +2,7 @@
 <p><em>$stylist.getDescription()</em></p>
 
 <h3>Clients
-  <a href="/$stylist.getId()/clients/new"><button class="btn btn-success" type="button">Add new client</button></a>
+  <a href="/stylists/$stylist.getId()/clients/new"><button class="btn btn-success" type="button">Add new client</button></a>
 </h3>
 #foreach ($client in $clients)
   <h4>$client.getFirstName() $client.getLastName()

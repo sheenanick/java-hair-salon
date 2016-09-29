@@ -1,5 +1,5 @@
 <h1>Edit Client: $client.getFirstName() $client.getLastName()</h1>
-<form action="/$stylist.getId()/clients/$client.getId()/edit" method="post">
+<form action="/stylists/$stylist.getId()/clients/$client.getId()/edit" method="post">
   <input type="hidden" name="stylistid" value="$stylist.getId()">
   <div class="form-group">
     <label for="firstname">First Name</label>
@@ -14,5 +14,5 @@
     <input type="text" name="notes" class="form-control" value="$client.getNotes()" required>
   </div>
   <button class="btn btn-primary" type="submit" name="update">Update</button>
-  <a href="/$client.getId()/delete"><button class="btn btn-danger" type="button" name="delete">Delete</button></a>
+  <a href="/stylists/$client.getStylistId()/clients/$client.getId()/delete"><button class="btn btn-danger" type="button" name="delete">Delete</button></a>
 </form>
